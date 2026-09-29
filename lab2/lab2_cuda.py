@@ -20,8 +20,6 @@ for gpu in cuda.gpus:
     print(f"Compute capability: {gpu.compute_capability}")
     print(f"Estimated CUDA Core Count: {mp_count*64}")
 
-
-    with gpu:
-        free_mem, total_mem = cuda.current_context().get_memory_info()
+    free_mem, total_mem = cuda.current_context().get_memory_info()
     total_mem_gb = total_mem / (1024 ** 3)
     print(f"Total Memory Size: {total_mem_gb:.2f} GB ({total_mem} bytes)")
